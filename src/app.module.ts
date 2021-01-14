@@ -29,9 +29,9 @@ console.log(Joi);
       database: "db.sqlite" ,
       synchronize: process.env.NODE_ENV !=='prod',
       logging: process.env.NODE_ENV !== 'prod',
-      entities: [Restaurant,User],
+      entities: [User],
       
-    }), RestaurantsModule, UsersModule, CommonModule],
+    }), UsersModule, CommonModule],
   controllers: [],
   providers: [],
 })

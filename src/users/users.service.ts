@@ -16,18 +16,18 @@ export class UsersService {
         email,
         password,
         role
-    }: createAccountInput): Promise<{ok:boolean; error?:string}> {
+    }: createAccountInput): Promise<[boolean ,string?]> {
 
         try {
             const exists = await this.users.findOne({ email });   //이메일 존재 여부 확인
 
             if (exists) {   //이메일 존재 할경우
-                return {ok:false,error:'There is a user with that email already'};
+                return [false,'There is a user with that email already'];
             }
             await this.users.save(this.users.create({ email, password, role })) //save 와 create는 다름
-            return {ok:true};
+            return [true];
         } catch (e) {
-            return {ok:false,error:"Couldn't creatae account"};
+            return [false,"Couldn't creatae account"];
         }
     } 
 }
